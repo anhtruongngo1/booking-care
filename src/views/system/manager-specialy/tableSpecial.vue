@@ -6,18 +6,18 @@
                 :icon="['fas', 'plus']"
                 class="bg-[#0071BA] p-2 rounded-[50%] cursor-pointer text-white hover:text-xl"
             />
-            <p class="text-xl font-black text-[#0071BA] mr-[20%]">Tạo thêm</p>
+            <p class="text-xl font-black text-[#0071BA] mr-[20%]">{{ $t('button.addnew')}}</p>
         </div>
 
-        <p class="text-xl font-black text-[#0071BA]">DANH SÁCH CÁC CHUYÊN KHOA</p>
+        <p class="text-xl font-black text-[#0071BA]">{{ $t('home.listSpecial')}}</p>
     </div>
     <div class="min-h-[56%] shadow-md mt-4">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" className="px-6 py-3">STT</th>
-                    <th scope="col" className="px-6 py-3">Tên chuyên khoa</th>
-                    <th scope="col" className="px-6 py-3">Ngày tạo</th>
+                    <th scope="col" className="px-6 py-3">{{ $t('label.nameSpecial')}}</th>
+                    <th scope="col" className="px-6 py-3">{{ $t('label.dateCreate')}}</th>
                     <th scope="col" className="px-6 py-3">Thumb</th>
                     <th scope="col" className="px-6 py-3">
                         <span className="sr-only">Edit</span>
@@ -49,13 +49,13 @@
                             @click="handleEdit(item)"
                             className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                         >
-                            Edit
+                        {{ $t('button.edit')}}
                         </button>
                         <button
                             @click="deleteSpecial(item.id)"
                             className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                         >
-                            Delete
+                        {{ $t('button.delete')}}
                         </button>
                     </td>
                 </tr>

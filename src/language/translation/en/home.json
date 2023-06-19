@@ -20,18 +20,15 @@
         "Healthbusiness": "sức khỏe doanh nghiệp",
         "MEDICALBACKGROUND": "MEDICAL BACKGROUND",
         "COMPREHENSIVEHEALTHCARE": "COMPREHENSIVE HEALTH CARE",
-        "welcome": "welcome" ,
-        "popular-specialty" : "Popular specialty" ,
-        "top-facilities" : "Outstanding medical facility"
-
-
+        "welcome": "welcome",
+        "popular-specialty": "Popular specialty",
+        "top-facilities": "Outstanding medical facility"
     },
     "menu": {
         "admin": {
             "user": "user",
             "manage-user": " user management",
             "manage-doctor": " doctor management",
-            "manage-user": "account management " ,
             "manage-admin": "admin management",
             "crud": "CRUD user",
             "crud-redux": "CRUD redux",
@@ -40,13 +37,14 @@
             "specialty": "specialty",
             "manage-specialty": " management specialty",
             "handbook": "handbook",
-            "manage-apointments" : "Manage medical appointments" 
-
+            "manage-apointments": "Manage medical appointments"
         },
         "doctor": {
+            "titleHeader" : "Doctor" ,
             "manage-user": "User",
-            "manage-schedule": "schedule management",
-            "manage-patient": "manage appointment  "
+            "manage-schedule": "Schedule management",
+            "manage-patient": "Manage appointment  ",
+            "manage-history": "Medical examination history  "
         }
     },
     "manage-schedule": {
@@ -57,13 +55,75 @@
         "lastName": "lastName",
         "position": "position",
         "image": "image",
-        "address" : "address" ,
+        "address": "address",
         "action": "action"
     },
-    "button" :{
-        "addnew" : "Add New" ,
-        "prev" :"Prev" ,
-        "next" :"Next" ,
-        "more" : "More"
+    "button": {
+        "addnew": "Add New",
+        "prev": "Prev",
+        "next": "Next",
+        "more": "More",
+        "delete": "Delete" ,
+        "edit"  : "Edit" ,
+        "complete" : "Complete"
+    },
+    "home": {
+        "plan-your": "MANAGE YOUR MEDICAL EXAMINATION PLAN",
+        "user-manager": " MANAGE USER" ,
+        "accout-manager" : " MANAGEMENT ACCOUT" ,
+        "doctorPlan"      : "MANAGE THE DOCTOR'S PLAN" ,
+        "manager-appointments" : "MANAGE MEDICAL APPOINTMENTS " ,
+        "listClinic" : "LIST OF FACILITIES" ,
+        "listDoctor" : "LIST OF DOCTORS"    ,
+        "listSpecial" : "LIST OF SPECIALISTS"
+  
+    },
+    "label": {
+        "choosen-date": "Choose a date",
+        "time": "Time",
+        "fullName": "Full name",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "role": "Role",
+        "image": "Image",
+        "password": "Password",
+        "phone" : "Phone" ,
+        "position" : "Position" ,
+        "upLoad": "Up load",
+        "gender": "Gender",
+        "address": "Address",
+        "actions": "Actions",
+        "details": "Details" ,
+        "condition" : "Condition" ,
+        "searchName" : "Search by Name" ,
+        "newEdit"   : "Add new or edit" ,
+        "doctorDetail" : "Doctor's details" ,
+        "choosen-clinic" : "Choose a Clinic" ,
+        "choosen-doctor" : "Choose a Doctor" ,
+        "doctor-information" : "Introduction information" ,
+        "nameClinic"   : "Name clinic" ,
+        "nameSpecial"   : "Name special" ,
+
+        "paymentMethod"   : "Select a payment method" ,
+        "priceMethod"   : "Choose price" ,
+        "provinceMethod"   : "Choose province" ,
+        "specialMethod"   : "Choose special" ,
+        "historyExam"   : "Examination history" ,
+        "specialName"   : "Specialist name" ,
+        "dateCreate"    : "Date created" 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from "vue-router"
+import { createRouter, createWebHashHistory ,createWebHistory } from "vue-router"
 const routes = [
     {
         path: "/",
@@ -16,11 +16,19 @@ const routes = [
     },
     {
         path: "/login",
-        name: 'Login',
+        // name: 'Login',
         meta: {
             layout : 'default'
         } ,
         component: ()=> import(/* webpackChunkName : "home" */ "@/views/auth/login.vue")
+    },
+    {
+        path: "/verify-booking",
+        name: 'verify',
+        meta: {
+            layout : 'default'
+        } ,
+        component: ()=> import(/* webpackChunkName : "home" */ "@/components/verify/verify.vue")
     },
     {
         path: "/handbook",
@@ -84,7 +92,7 @@ const routes = [
         ]
     },
     {
-        path: "/doctor",
+        path: "/doctor/manager",
         name: 'Doctor',
         meta: {
             layout : 'auth'
@@ -94,6 +102,16 @@ const routes = [
             {
                 path: 'manager-schedule',
                   component: () => import(/* webpackChunkName : "home" */ "@/views/Doctor/doctor-schedule/ScheduleDetails.vue"),
+    
+            },
+            {
+                path: 'manager-patient',
+                  component: () => import(/* webpackChunkName : "home" */ "@/views/Doctor/doctor-patient/PatientList.vue"),
+    
+            },
+            {
+                path: 'manager-history',
+                  component: () => import(/* webpackChunkName : "home" */ "@/views/Doctor/doctor-history/doctorHistory.vue"),
     
             },
 
@@ -225,11 +243,10 @@ const routes = [
     // }
 ]
 const router = createRouter({
-    history: createWebHashHistory(process.env.BASE_URL),
+    history: createWebHistory(process.env.BASE_URL),
     routes,
 })
 router.beforeEach((to, from, next) => {
-    // chuyển đến trang login nếu chưa được login
     const publicPages = [ '/system' ,];
     const authRequired = publicPages.includes(to.path);
     const loggedIn = localStorage.getItem('access_token');

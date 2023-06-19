@@ -1,6 +1,6 @@
 <template>
       <div className="w-[30%] ml-[2%]">
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
+        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $t('label.address')}}</label>
         <input
         id="address"
             type="text"
@@ -20,7 +20,7 @@
 
 <script>
 import { ref, watch } from "vue"
-import useFormValidation from '../../../manager-user/form/validate/FormValidation';
+import useFormValidation from '../../../../../components/validate/FormValidation';
 
 export default {
     props: {

@@ -1,6 +1,7 @@
 <template>
     <div className="w-[40%]">
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Chọn bác sĩ</label>
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">    {{ $t('label.choosen-doctor')}}
+</label>
             <select
             @change="$emit('update:modelValue', $event.target.value)"
             @keyup="validateInput"
@@ -8,7 +9,7 @@
             v-model="doctorId"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
-            <option disabled selected value="">Chọn một Bác sĩ</option>
+            <option disabled selected value="">{{ $t('label.choosen-doctor')}}</option>
             <option v-for="item in listData" :key="item.id" :value="item.id">
                 <!-- {{ local === 'vn' ? item.valueVi : item.valueEn }} -->
                 {{ item.firstName }} {{ item.lastName }}
@@ -23,7 +24,7 @@
 
 <script>
 import useDoctor from "@/services/apiListDoctor"
-import useFormValidation from '../../../manager-user/form/validate/FormValidation';
+import useFormValidation from '../../../../../components/validate/FormValidation';
 import {ref , watch} from "vue"
 export default {
     props: {

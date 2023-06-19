@@ -16,7 +16,7 @@
                 type="submit"
                 className="disabled:opacity-50 text-white bg-blue-700 hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus-visible:ring-blue-800"
             >
-                SAVE
+            {{ $t('button.addnew')}}
             </button>
             <div></div>
         </div>
@@ -35,8 +35,8 @@ import roleField from './Field/roleField.vue';
 import positionFieldVue from './Field/positionField.vue';
 import { reactive, ref, inject } from 'vue';
 import imageFieldVue from './Field/imageField.vue';
-import useSubmitButtonState from './validate/UseSubmitButtonState';
-import useFormValidation from './validate/FormValidation';
+import useSubmitButtonState from '../../../../components/validate/UseSubmitButtonState';
+import useFormValidation from '../../../../components/validate/FormValidation';
 import useUser from '@/services/createUser';
 import {useLoading} from 'vue-loading-overlay'
 

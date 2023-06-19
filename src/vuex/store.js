@@ -1,4 +1,5 @@
 import { createStore } from 'vuex';
+import createPersistedState from 'vuex-persistedstate';
 import i18n from '@/language/i18n';
 import useAllcode from '@/services/allCodeService';
 
@@ -56,5 +57,8 @@ const store = createStore({
             }
         },
     },
+    plugins: [createPersistedState({
+        paths: ['profile', 'listGender', 'listRole', 'listPosition']
+    })]
 });
 export default store;

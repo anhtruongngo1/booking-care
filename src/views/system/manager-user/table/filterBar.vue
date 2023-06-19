@@ -1,7 +1,7 @@
 <template>
     <div class="mt-[7%] mb-[5%] flex gap-x-2">
         <div>
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Điều kiện</label>
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $t('label.condition')}}</label>
             <select
                 v-model="option"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus-visible:ring-blue-500 focus-visible:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus-visible:ring-blue-500 dark:focus-visible:border-blue-500"
@@ -12,7 +12,7 @@
             </select>
         </div>
         <div class="w-[50%]">
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Search by Name</label>
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $t('label.searchName')}}</label>
             <input
                 type="text"
                 :value="myFieldValueOnInput"

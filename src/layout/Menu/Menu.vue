@@ -105,19 +105,25 @@ export default {
         ];
         const MENU_DOCTOR = [
             {
-                title: 'menu.doctor.manage-user',
+                title: 'menu.doctor.titleHeader',
                 children: {
                     title: 'Doctor',
                     data: [
                         {
                             type: 'Schedule',
-                            to: '/doctor/manager-schedule',
+                            to: '/doctor/manager/manager-schedule',
                             title: 'menu.doctor.manage-schedule',
                         },
                         {
                             type: 'Schedule',
-                            to: '/doctor/manage-patient',
+                            to: '/doctor/manager/manager-patient',
                             title: 'menu.doctor.manage-patient',
+
+                        },
+                        {
+                            type: 'Schedule',
+                            to: '/doctor/manager/manager-history',
+                            title: 'menu.doctor.manage-history',
 
                         }
                     ]

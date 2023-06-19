@@ -5,7 +5,7 @@
         </div>
         <div class="w-full">
             <label for="datepicker" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >Choose a date:</label
+                >{{ $t('label.choosen-date')}}</label
             >
             <VueDatePicker
                 v-model="date"
@@ -21,13 +21,13 @@
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" className="px-6 py-3">STT</th>
-                    <th scope="col" className="px-6 py-3">THỜI GIAN</th>
-                    <th scope="col" className="px-6 py-3">HỌ VÀ TÊN</th>
-                    <th scope="col" className="px-6 py-3">GIỚI TÍNH</th>
-                    <th scope="col" className="px-6 py-3">ĐỊA CHỈ</th>
+                    <th scope="col" className="px-6 py-3">{{ $t('label.time')}}</th>
+                    <th scope="col" className="px-6 py-3">{{ $t('label.fullName')}}</th>
+                    <th scope="col" className="px-6 py-3">{{ $t('label.gender')}}</th>
+                    <th scope="col" className="px-6 py-3">{{ $t('label.address')}}</th>
                     <th scope="col" className="px-6 py-3">EMAIL</th>
 
-                    <th scope="col" className="px-6 py-3">ACTIONS</th>
+                    <th scope="col" className="px-6 py-3">{{ $t('label.actions')}}</th>
                     <th scope="col" className="px-6 py-3">
                         <span className="sr-only">Edit</span>
                     </th>
@@ -56,7 +56,7 @@
                             @click="handleConfirm(item)"
                             className="font-medium text-blue-600 dark:text-blue-500 hover:underline bg-orange-400 px-2 py-1 rounded-xl "
                         >
-                            Hoàn thành
+                        {{ $t('button.complete')}}
                         </button>
                     </td>
                 </tr>
@@ -84,6 +84,7 @@
         </button>
     </div>
     <confirmVue />
+
 </template>
 
 <script>

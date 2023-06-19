@@ -1,6 +1,6 @@
 <template>
     <div className="w-[30%] ml-[2%]">
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Chọn Tỉnh Thành</label>
+        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $t('label.provinceMethod')}}</label>
         <select
             @change="$emit('update:modelValue', $event.target.value)"
             v-model="provinceId"
@@ -8,7 +8,7 @@
             @blur="validateInput"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         >
-            <option disabled selected value="">Chọn Tỉnh thành</option>
+            <option disabled selected value="">{{ $t('label.provinceMethod')}}</option>
             <option v-for="item in dataAllcode" :key="item.id" :value="item.keyMap">
                 {{
                     local === 'vn'
@@ -26,7 +26,7 @@
 import useAllcode from '@/services/allCodeService';
 import { ref, computed , watch} from 'vue';
 import i18n from '@/language/i18n';
-import useFormValidation from '../../../manager-user/form/validate/FormValidation';
+import useFormValidation from '../../../../../components/validate/FormValidation';
 
 export default {
     props: {

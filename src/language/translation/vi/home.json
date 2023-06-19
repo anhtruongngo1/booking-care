@@ -1,31 +1,29 @@
 {
-    "homeheader":{
-        "Specialist" : "Chuyên khoa" ,
-        "specialty"  :  "tìm bác sĩ theo chuyên khoa" ,
-        "Health" : "cơ sỡ y tế" ,
-        "hospital" : "chọn bệnh viện phòng khám" ,
-        "doctor" : "bác sĩ",
-        "Choosedoctor" : " chọn bác sĩ giỏi" ,
-        "package" : "gói khám",
-        "Generalcheck" : " chọn gói khám" ,
-        "Support" : "hổ trợ" ,
-        "ExaminationSpecialist" : "khám chuyên khoa" ,
-        "remoteexamination" : "khám từ xa" ,
-        "generalexamination" : "khám tổng quát" ,
-        "medicaltest" : " xét nghiệm y học" ,
-        "mentalhealth" : "sức khỏe tinh thần" ,
-        "dentalexamination" : "khám nha khoa" ,
-        "surgerypackage" : "gói phẩu thuật" ,
-        "medicalproducts" : "sản phẩm y tế" ,
-        "Healthbusiness" : "sức khỏe doanh nghiệp" ,
-        "MEDICALBACKGROUND" : "NỀN TẢN Y TẾ" ,
-        "COMPREHENSIVEHEALTHCARE" : "CHĂM SÓC SỨC KHỎE TOÀN DIỆN" ,
-        "welcome" : "xin chào" ,
-        "popular-specialty" : "Chuyên khoa phố biến" ,
-        "top-facilities" : "Cơ sỡ y tế nổi bật"
-
-
-        } ,
+    "homeheader": {
+        "Specialist": "Chuyên khoa",
+        "specialty": "tìm bác sĩ theo chuyên khoa",
+        "Health": "cơ sỡ y tế",
+        "hospital": "chọn bệnh viện phòng khám",
+        "doctor": "bác sĩ",
+        "Choosedoctor": " chọn bác sĩ giỏi",
+        "package": "gói khám",
+        "Generalcheck": " chọn gói khám",
+        "Support": "hổ trợ",
+        "ExaminationSpecialist": "khám chuyên khoa",
+        "remoteexamination": "khám từ xa",
+        "generalexamination": "khám tổng quát",
+        "medicaltest": " xét nghiệm y học",
+        "mentalhealth": "sức khỏe tinh thần",
+        "dentalexamination": "khám nha khoa",
+        "surgerypackage": "gói phẩu thuật",
+        "medicalproducts": "sản phẩm y tế",
+        "Healthbusiness": "sức khỏe doanh nghiệp",
+        "MEDICALBACKGROUND": "NỀN TẢN Y TẾ",
+        "COMPREHENSIVEHEALTHCARE": "CHĂM SÓC SỨC KHỎE TOÀN DIỆN",
+        "welcome": "xin chào",
+        "popular-specialty": "Chuyên khoa phố biến",
+        "top-facilities": "Cơ sỡ y tế nổi bật"
+    },
     "menu": {
         "system": {
             "header": "Hệ thống",
@@ -38,54 +36,109 @@
             "system-parameter": {
                 "header": "Tham số hệ thống"
             }
-        } ,
-   
-    "admin" :{
-        "user" : "Người dùng" ,
-        "manage-user": "Người dùng" ,
-        "manage-account": "Tài khoản" ,
-        "manage-doctor":"Quản lí bác sĩ" ,
-        "manage-admin" : "Quản lí admin" ,
-        "crud" : "CRUD user" ,
-        "crud-redux" : "CRUD user" ,
-        "clinic" : "Phòng khám" ,
-        "manage-clinic" : " Quản lí phòng khám",
-        "specialty" : "Chuyên khoa" ,
-        "manage-specialty" : " Quản lí chuyên khoa" ,
-        "handbook" : "Cẩm nang" ,
-        "manage-handbook" : " Quản lí cẩm nang" ,
-        "manage-apointments" : "Quản lý lịch khám bệnh" 
+        },
 
-
+    "admin": {
+            "user": "Người dùng",
+            "manage-user": "Người dùng",
+            "manage-account": "Tài khoản",
+            "manage-doctor": "Quản lí bác sĩ",
+            "manage-admin": "Quản lí admin",
+            "crud": "CRUD user",
+            "crud-redux": "CRUD user",
+            "clinic": "Phòng khám",
+            "manage-clinic": " Quản lí phòng khám",
+            "specialty": "Chuyên khoa",
+            "manage-specialty": " Quản lí chuyên khoa",
+            "handbook": "Cẩm nang",
+            "manage-handbook": " Quản lí cẩm nang",
+            "manage-apointments": "Quản lý lịch khám bệnh"
+        },
+    "doctor": {
+            "titleHeader" : "Bác sĩ" ,
+            "manage-user": "người dùng",
+            "manage-schedule": "Quản lí kế hoạch khám bệnh ",
+            "manage-patient": "Quản lí bệnh nhân khám bệnh  ",
+            "manage-history": "Lịch sử khám bệnh  "
+        }
     },
-    "doctor" : {
-        "manage-user" : "người dùng",
-        "manage-schedule" : "Quản lí kế hoạch khám bệnh ",
-        "manage-patient" : "Quản lí bệnh nhân khám bệnh  "
-     }
-},
-    "manage-schedule" : {
-        "title" : " quản lí kế hoạch khám bệnh của bác sĩ"
+    "manage-schedule": {
+        "title": " quản lí kế hoạch khám bệnh của bác sĩ"
     },
-    "manage-patient" : {
-        "title" : " quản lí kế hoạch khám bệnh của bác sĩ"
+    "manage-patient": {
+        "title": " quản lí kế hoạch khám bệnh của bác sĩ"
     },
     "pagination": {
         "firstName": "Tên",
         "lastName": "Họ",
         "position": "Chức vụ",
         "image": "Hình ảnh",
-        "address" : "Địa chỉ" ,
+        "address": "Địa chỉ",
         "action": "Chức năng"
     },
-    "button" :{
-        "addnew" : "Thêm mới" ,
-        "prev" :"Quay lại" ,
-        "next" :"Tiếp" ,
-        "more" : "Xem thêm"
-    }
-    
+    "button": {
+        "addnew": "Thêm mới",
+        "prev": "Quay lại",
+        "next": "Tiếp",
+        "more": "Xem thêm" ,
+        "delete" : "Xóa" ,
+        "edit"   : "Chĩnh sửa" ,
+        "complete" : "Hoàn thành"
+     },
+    "home": {
+        "plan-your": "QUẢN LÍ KẾ HOẠCH KHÁM BỆNH CỦA BẠN",
+        "user-manager": " QUẢN LÍ NGƯỜI DÙNG" ,
+        "accout-manager" : " QUẢN LÍ CÁC TÀI KHOẢN" ,
+        "doctorPlan"      : "QUẢN LÍ KẾ HOẠCH KHÁM BỆNH CỦA BÁC SĨ" ,
+        "manager-appointments" : "QUẢN LÍ LỊCH KHÁM BỆNH",
+        "listClinic" : "DANH SÁCH CÁC CƠ SỠ" ,
+        "listDoctor" : "DANH SÁCH CÁC BÁC SĨ",
+        "listSpecial" : "DANH SÁCH CÁC CHUYÊN KHOA"
 
-   
-       
+
+
+
+    },
+    "label": {
+        "choosen-date": "Chọn ngày ",
+        "time": "Thời gian",
+        "fullName": "Họ và tên",
+        "firstName": "Tên",
+        "lastName": "Họ",
+        "role": "Vai trò",
+        "position": "Chức vụ",
+        "upLoad": "Tải lên",
+        "image": "Hình ảnh",
+        "gender": "Giới tính",
+        "password": "Mật khẩu",
+        "phone"   : "Số điện thoại" ,
+        "address": "Địa chỉ",
+        "actions": "Trạng thái",
+        "details": "Chi tiết" ,
+        "condition" : "Điều kiện",
+        "searchName" : "Tìm kiếm theo tên" ,
+        "newEdit"   : "Thêm mới hoặc chĩnh sửa" ,
+        "doctorDetail" : "Thông tin chi tiết bác sĩ" ,
+        "choosen-clinic" : "Chọn Phòng khám" ,
+        "choosen-doctor" : "Chọn Bác sĩ" ,
+        "doctor-information" : "Thông tin giới thiệu" ,
+        "nameClinic"   : "Tên phòng khám" ,
+        "nameSpecial"   : "Tên chuyên khoa" ,
+
+        "paymentMethod"   : "Chọn Phương thức thanh toán" ,
+        "priceMethod"   : "Chọn Gía" ,
+        "provinceMethod"   : "Chọn tỉnh thành" ,
+        "specialMethod"   : "Chọn chuyên khoa" ,
+        "historyExam"   : "Lịch sử khám"  ,
+        "specialName"   : "Tên chuyên khoa" ,
+        "dateCreate"    : " Ngày tạo"
+
+
+
+
+
+
+
+
+    }
 }

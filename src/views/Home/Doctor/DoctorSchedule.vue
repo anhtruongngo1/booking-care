@@ -130,13 +130,18 @@ export default {
                 dataScheduleDoctor.value = res.infor.data;
             }
         };
-        const currentTime = ref(new Date());
+        const currentTime = new Date();
 
         const filteredAppointments = computed(() => {
-            const currentTimeValue = currentTime.value.getTime();
+            const currentTimeValue = currentTime.getTime();
             return dataScheduleDoctor.value.filter((appointment) => {
-                const appointmentTime = moment(appointment.timeTypeData.valueVi, 'hh:mm A').toDate();
-                return appointmentTime > currentTimeValue;
+                if (appointment.date > currentTime) {
+                    return true; 
+                } else {
+                    
+                    const appointmentTime = moment(appointment.timeTypeData.valueVi, 'hh:mm A').toDate();
+                    return appointmentTime > currentTimeValue;
+                }
             });
         });
         const handleBtn = (data) => {

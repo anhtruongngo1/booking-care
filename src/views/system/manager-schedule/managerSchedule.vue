@@ -1,7 +1,7 @@
 <template>
     <div className="manage-schedule-container">
         <div className="uppercase my-[15px] text-[17px] text-center font-semibold">
-            QUẢN LÍ KẾ HOẠCH KHÁM BỆNH CỦA BÁC SĨ
+            {{ $t('home.doctorPlan')}}
         </div>
         <div className="flex px-[10%]  ">
             <div className="w-full">
@@ -9,7 +9,7 @@
             </div>
             <div class="w-full ">
                 <label for="datepicker" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                    >Choose a date:</label
+                    >{{ $t('label.choosen-date')}}:</label
                 >
                 <VueDatePicker
                     v-model="date"
@@ -22,13 +22,13 @@
 
             </div>
         </div>
-        <div class="flex mt-[5%] max-w-[80%] mx-auto">
+        <div class="flex mt-[5%] max-w-[80%] mx-auto gap-5">
             <div  v-for="item in rangTime" :key="item.id">
                 <button
                 @click="handleClickBtnTime(item)"
                 :class="{'bg-yellow-400' : item.isSelected}"
                  type="button" class="text py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                    {{ item.valueEn }}
+                    {{ item.valueVi }}
                 </button>
                  </div>
              </div>

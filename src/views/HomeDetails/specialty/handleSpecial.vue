@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="px-[5%] font-bold">
-        <router-link :to="`/doctor/${item.id}`" class="border-b-[1px] border-gray-200 cursor-pointer py-4 block" v-for="item in listData" :key="item.id">
+        <router-link :to="`/special/${item.id}`" class="border-b-[1px] border-gray-200 cursor-pointer py-4 block" v-for="item in listData" :key="item.id">
             <div class="flex gap-x-4 my-4 ">
                 <img class="w-[100px] h-[67px]" :src="item.image" />
                 <div>

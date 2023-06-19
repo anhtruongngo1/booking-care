@@ -1,6 +1,6 @@
 <template>
            <div class="pt-[3%] h-[100px]">
-                    <p class="text-xl font-black text-[#0071BA]">DANH SÁCH CÁC Bác sĩ</p>
+                    <p class="text-xl font-black text-[#0071BA]">{{ $t('home.listDoctor')}}</p>
                 </div>
                 <handbookBarVue />
                 <div class="min-h-[56%] shadow-md mt-4">
@@ -11,10 +11,10 @@
                             <tr>
                                 <th scope="col" className="px-6 py-3">STT</th>
 
-                                <th scope="col" className="px-6 py-3">firstName</th>
-                                <th scope="col" className="px-6 py-3">lastName</th>
+                                <th scope="col" className="px-6 py-3">{{ $t('label.firstName')}}</th>
+                                <th scope="col" className="px-6 py-3">{{ $t('label.lastName')}}</th>
                                 <th scope="col" className="px-6 py-3">email</th>
-                                <th scope="col" className="px-6 py-3">Position</th>
+                                <th scope="col" className="px-6 py-3">{{ $t('label.position')}}</th>
 
                                 <th scope="col" className="px-6 py-3">Thumb</th>
                             </tr>

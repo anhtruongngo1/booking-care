@@ -1,6 +1,6 @@
 <template>
     <div className="w-[24%]">
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $t('label.password')}}</label>
         <input
         required 
         id="password"
@@ -23,7 +23,7 @@
 
 <script>
 import { ref } from 'vue';
-import useFormValidation from '../validate/FormValidation';             
+import useFormValidation from '../../../../../components/validate/FormValidation';             
 export default {
     props: {
         password : String

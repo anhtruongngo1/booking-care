@@ -1,6 +1,6 @@
 <template>
     <div className="w-[24%]">
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone</label>
+        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {{ $t('label.phone')}}</label>
         <input 
         id="phone"
             type="tel"
@@ -22,7 +22,7 @@
 
 <script>
 import { ref , watch} from 'vue';
-import useFormValidation from '../validate/FormValidation';             
+import useFormValidation from '../../../../../components/validate/FormValidation';             
 export default {
     props: {
         phone : String   

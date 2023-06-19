@@ -1,6 +1,6 @@
 <template>
     <div className="w-[24%]">
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">firstName</label>
+        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $t('label.firstName')}}</label>
         <input
             type="text"
             id="firstName"
@@ -20,7 +20,7 @@
 
 <script>
 import { ref , watch } from 'vue';
-import useFormValidation from '../validate/FormValidation';
+import useFormValidation from '../../../../../components/validate/FormValidation';
 export default {
     props: {
         firstName : String

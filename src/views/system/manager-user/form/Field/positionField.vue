@@ -1,6 +1,6 @@
 <template>
     <div className="w-[24%]">
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Position</label>
+        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $t('label.position')}}</label>
         <select
             @change="$emit('update:modelValue', $event.target.value)"
             v-model="position"

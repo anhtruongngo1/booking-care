@@ -1,6 +1,6 @@
 <template>
     <div className="w-[40%] ml-[3%] ">
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Chọn Phòng khám</label>
+        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $t('label.choosen-clinic')}}</label>
         <select
             @change="$emit('update:modelValue', $event.target.value)"
             v-model="clinicId"
@@ -23,7 +23,7 @@
 import useClinic from "@/services/apiListClininic"
 import { ref, computed , watch } from 'vue';
 import i18n from '@/language/i18n';
-import useFormValidation from '../../../manager-user/form/validate/FormValidation';
+import useFormValidation from '../../../../../components/validate/FormValidation';
 
 export default {
     props: {

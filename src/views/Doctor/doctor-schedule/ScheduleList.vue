@@ -1,7 +1,11 @@
 <template>
     <div className="pl-36 mt-32 border-r-[1px] border-solid border-red-500">
         <div className="all-schedule">
-            <select v-model="date" class="px-3 rounded-xl py-3 text-[#45c3d2] font-semibold underline outline-none" @change="onChange">
+            <select
+                v-model="date"
+                class="px-3 rounded-xl py-3 text-[#45c3d2] font-semibold underline outline-none"
+                @change="onChange"
+            >
                 <option class="cursor-pointer" v-for="item in allDays" :key="item.id" :value="item.value">
                     {{ item.label }}
                 </option>
@@ -13,7 +17,7 @@
                 <span class="text-xl"> Lịch khám </span>
             </div>
             <div className="mt-3">
-                <div v-if="filteredAppointments">
+                <div v-if="filteredAppointments.length > 0">
                     <div className="flex gap-4 flex-wrap">
                         <button
                             v-for="item in filteredAppointments"
@@ -25,14 +29,9 @@
                             <p v-else>{{ item.timeTypeData.valueVi }} AM</p>
                         </button>
                     </div>
-                    <div className="mt-3">
-                        <span>
-                            Lịch của bạn đang trống <font-awesome-icon :icon="['far', 'hand-point-up']" /> 
-                        </span>
-                    </div>
                 </div>
-                <div v-else className="no-schedule">
-                    không có lịch hẹn trong thời gian này , vui lòng chọn thời gian khác
+                <div v-else className="mt-3">
+                    <span> Lịch của bạn đang trống <font-awesome-icon :icon="['far', 'hand-point-up']" /> </span>
                 </div>
             </div>
         </div>
@@ -56,6 +55,7 @@ export default {
         const idDoctor = ref('');
         const store = useStore();
         const profile = computed(() => store.state.profile);
+        const emitter = inject('emitter');
 
         onMounted(() => {
             getData({ doctorId: profile.value.id, date: date.value });
@@ -119,14 +119,24 @@ export default {
                 dataScheduleDoctor.value = res.infor.data;
             }
         };
-        const currentTime = ref(new Date());
+        const currentTime = new Date();
 
         const filteredAppointments = computed(() => {
-            const currentTimeValue = currentTime.value.getTime();
+            const currentTimeValue = currentTime.getTime();
             return dataScheduleDoctor.value.filter((appointment) => {
-                const appointmentTime = moment(appointment.timeTypeData.valueVi, 'hh:mm A').toDate();
-                return appointmentTime > currentTimeValue;
+                if (appointment.date > currentTime) {
+                    return true;
+                } else {
+                    const appointmentTime = moment(appointment.timeTypeData.valueVi, 'hh:mm A').toDate();
+                    return appointmentTime > currentTimeValue;
+                }
             });
+        });
+        emitter.on('doctorSaveSchedule', (value) => {
+            // *Listen* for event
+            if (value === 100) {
+                getData({ doctorId: profile.value.id, date: date.value });
+            }
         });
         return {
             local,
@@ -140,9 +150,7 @@ export default {
             filteredAppointments,
         };
     },
-    components: {
-
-    },
+    components: {},
 };
 </script>
 

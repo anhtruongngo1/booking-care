@@ -21,7 +21,7 @@
 
 <script>
 import { ref , watch , toRefs , onMounted } from 'vue';
-import useFormValidation from '../validate/FormValidation';
+import useFormValidation from '../../../../../components/validate/FormValidation';
 export default {
     props: {
         email : String

@@ -7,13 +7,13 @@
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" className="px-6 py-3">Email</th>
-                    <th scope="col" className="px-6 py-3">FistName</th>
-                    <th scope="col" className="px-6 py-3">LastName</th>
-                    <th scope="col" className="px-6 py-3">Role</th>
-                    <th scope="col" className="px-6 py-3">Addrress</th>
-                    <th scope="col" className="px-6 py-3">Image</th>
+                    <th scope="col" className="px-6 py-3">{{ $t('label.firstName') }}</th>
+                    <th scope="col" className="px-6 py-3">{{ $t('label.lastName') }}</th>
+                    <th scope="col" className="px-6 py-3">{{ $t('label.role') }}</th>
+                    <th scope="col" className="px-6 py-3">{{ $t('label.address') }}</th>
+                    <th scope="col" className="px-6 py-3">{{ $t('label.image')}}</th>
                     <th scope="col" className="px-6 py-3">
-                        <span className="sr-only">Edit</span>
+                        <span className="sr-only">{{ $t('button.edit')}}</span>
                     </th>
                 </tr>
             </thead>
@@ -41,13 +41,13 @@
                             @click="handleEdit(item.id)"
                             className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                         >
-                            Edit
+                        {{ $t('button.edit')}}
                         </button>
                         <button
                             @click="deleteUser(item.id)"
                             className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                         >
-                            Delete
+                        {{ $t('button.delete')}}
                         </button>
                     </td>
                 </tr>

@@ -1,6 +1,6 @@
 <template>
     <div className="w-[55%] ml-[2%]">
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Thông tin giới thiệu </label>
+        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> {{ $t('label.doctor-information')}} </label>
         <textarea
             id="message"
             v-model="textDoctor"
@@ -18,7 +18,7 @@
 
 <script>
 import { ref, watch } from 'vue';
-import useFormValidation from '../../../manager-user/form/validate/FormValidation';
+import useFormValidation from '../../../../../components/validate/FormValidation';
 
 export default {
     props: {

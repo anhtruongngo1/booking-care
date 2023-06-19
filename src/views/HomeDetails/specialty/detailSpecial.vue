@@ -30,6 +30,7 @@
         </div>
         <div class="bg-[#EEEEEE] px-[10%] flex">
             <div>
+                   <detailsDoctorVue />
                  </div>
                  <div>
                     <DoctorSchedule />
@@ -43,6 +44,7 @@
 <script>
 import DoctorExtraInforVue from '@/views/Home/Doctor/DoctorExtraInfor.vue';
 import DoctorSchedule from '@/views/Home/Doctor/DoctorSchedule.vue';
+import detailsDoctorVue from '@/views/HomeDetails/specialty/detailDoctor.vue';
 export default {
     setup() {
 
@@ -52,7 +54,8 @@ export default {
     },
     components: {
         DoctorExtraInforVue,
-        DoctorSchedule
+        DoctorSchedule,
+        detailsDoctorVue
     }
 };
 </script>

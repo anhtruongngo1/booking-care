@@ -5,7 +5,8 @@
         :disabled="actions===false"
         className="disabled:opacity-60 bg-orange-400 py-[8px] px-[5px] rounded-md my-[15px] min-w-[75px]"
     >
-        Edit
+    {{ $t('button.edit')}}
+
     </button>
     <button
         v-else
@@ -13,7 +14,8 @@
         :disabled="actions === false"
         className="disabled:opacity-60 bg-orange-400 py-[8px] px-[5px] rounded-md my-[15px] min-w-[75px]"
     >
-        Save
+    {{ $t('button.addnew')}}
+
     </button>
 </template>
 
