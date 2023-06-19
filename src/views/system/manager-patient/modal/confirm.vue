@@ -26,7 +26,7 @@
                         >Chọn file đơn thuốc</label
                     >
                     <input
-                         @change="previewImage"
+                        @change="previewImage"
                         class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                         id="multiple_files"
                         type="file"
@@ -48,26 +48,29 @@
 </template>
 
 <script>
-import {ref , inject} from "vue"
+import { ref, inject } from 'vue';
 import { is } from 'date-fns/locale';
-import usePatient from "@/services/apiPatient"
+import usePatient from '@/services/apiPatient';
+import { useLoading } from 'vue-loading-overlay';
+
 export default {
-    props: {
-        
-    },
+    props: {},
     setup() {
-        const email = ref('')
-        const file = ref('')
+        const email = ref('');
+        const file = ref('');
         const isShow = ref(false);
         const emitter = inject('emitter');
-        const doctorId = ref('')
-        const timeType = ref('')
-        const patientId = ref('')
-        const patientName = ref('')
-        const { confirmPatient } = usePatient()
+        const doctorId = ref('');
+        const date = ref('');
+        const timeType = ref('');
+        const patientId = ref('');
+        const image = ref('');
+        const patientName = ref('');
+        const { confirmPatient } = usePatient();
         function previewImage(event) {
             var input = event.target;
-                console.log('check data' , file);
+            image.value = event.target.files[0];
+
             if (input.files) {
                 var input = event.target;
                 if (input.files) {
@@ -85,38 +88,71 @@ export default {
         }
         emitter.on('eventShowModalConfirm', (data) => {
             // *Listen* for event
-            email.value = data.patientData.email
-            doctorId.value = data.doctorId
-            timeType.value = data.timeType
-            patientId.value = data.patientId 
-            patientName.value = data.patientData.firstName
-            handleShow()
-            
+            email.value = data.patientData.email;
+            doctorId.value = data.doctorId;
+            timeType.value = data.timeType;
+            patientId.value = data.patientId;
+            patientName.value = data.patientData.firstName;
+            date.value = data.date;
+            handleShow();
         });
-        const handleSave = () => {
-            confirmPatient({
+        const $loading = useLoading({
+            // options
+            color: '#009B00',
+        });
+        const swal = inject('$swal');
+        const Toast = swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', swal.stopTimer);
+                toast.addEventListener('mouseleave', swal.resumeTimer);
+            },
+        });
+        const handleSave = async () => {
+            const loader = $loading.show({
+                // Optional parameters
+            });
+            const res = await confirmPatient({
                 email: email.value,
                 doctorId: doctorId.value,
                 patientId: patientId.value,
                 timeType: timeType.value,
                 imageBase64: file.value,
-                patientName : patientName.value
-                
-            })
-        }
+                patientName: patientName.value,
+                image: image.value,
+                date: date.value,
+            });
+            if (res.errCode !== 0) {
+                loader.hide();
 
+                Toast.fire({
+                    icon: 'error',
+                    title: res.errMessage,
+                });
+            } else {
+                loader.hide();
+                Toast.fire({
+                    icon: 'success',
+                    title: res.errMessage,
+                });
+                handleShow();
+                emitter.emit('handleListPatient', 100);
+            }
+        };
 
         return {
             email,
-            isShow ,
+            isShow,
             handleShow,
             previewImage,
-            file ,
-            handleSave
-        }
-    }
-
-
+            file,
+            handleSave,
+        };
+    },
 };
 </script>
 

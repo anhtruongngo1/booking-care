@@ -24,32 +24,27 @@
                     <th scope="col" className="px-6 py-3">STT</th>
                     <th scope="col" className="px-6 py-3">THỜI GIAN</th>
                     <th scope="col" className="px-6 py-3">HỌ VÀ TÊN</th>
-                    <th scope="col" className="px-6 py-3">GIỚI TÍNH</th>
                     <th scope="col" className="px-6 py-3">ĐỊA CHỈ</th>
                     <th scope="col" className="px-6 py-3">EMAIL</th>
-
-                    <th scope="col" className="px-6 py-3">ACTIONS</th>
+                    <th scope="col" className="px-6 py-3">DETAILS</th>
                 </tr>
             </thead>
             <tbody>
                 <tr
-                    v-for="(item , index ) in listData"
+                    v-for="(item , index ) in listHistoryData"
                     :key="item.id"
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                 >
                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{ index + 1 }}
                     </th>
-                    <td className="px-6 py-4"> {{ item.timeTypeDataPatient.valueVi }}</td>
-                    <td className="px-6 py-4">{{ item.patientData.lastName }} {{ item.patientData.firstName }}</td>
-                    <td className="px-6 py-4">{{ item.patientData.genderData.valueVi }}</td>
-                    <td className="px-6 py-4">{{ item.patientData.address }}</td>
-                    <td className="px-6 py-4">{{ item.patientData.email }}</td>
-
+                    <td className="px-6 py-4"> {{ formatDate(item.createdAt) }}</td>
+                    <td className="px-6 py-4">{{ item.patientHistoryData.firstName}} {{ item.patientHistoryData.lastName }}</td>
+                    <td className="px-6 py-4">{{item.patientHistoryData.address  }}</td>
+                    <td className="px-6 py-4">{{ item.patientHistoryData.email }}</td>
                     <td className="px-6 py-4">
-                  {{ item.statusId }}
+                        <img :src="item.files" />
                     </td>
-
                 </tr>
             </tbody>
         </table>
@@ -82,10 +77,12 @@ import usePatient from '@/services/apiPatient';
 import doctorField from '../manager-doctor/form/field/doctorField.vue';
 import { ref , watch ,inject } from "vue"
 import moment from 'moment';
+import { format } from 'date-fns';
+
 
 export default {
     setup() {
-        const { fetchListPatient, listData  , totalPage} = usePatient();
+        const { fetchListHistoryPatient, listHistoryData  , totalPage} = usePatient();
         const maxDate = ref(new Date()); // Ngày tối đa
         const dateFormat = ref('yyyy-MM-dd')
         const date = ref(moment(new Date()).add(0, 'days').startOf('day').valueOf());
@@ -95,40 +92,37 @@ export default {
 
 
         watch(doctorId, async (pa, pb) => {
-            const res = await fetchListPatient({
+            const res = await fetchListHistoryPatient({
                 doctorId: pa,
                 date: new Date(date.value).getTime(),
-                statusId : 'S3'
             });
 
         });
 
         function nextPage() {
             pageIndex.value = pageIndex.value + 1;
-            fetchListPatient({
+            fetchListHistoryPatient({
                 pageIndex : pageIndex.value ,
-                doctorId: pa,
+                doctorId: doctorId.value,
                 date: new Date(date.value).getTime(),
-                statusId : 'S3'
 
             });
 
         }
+        const formatDate = (date) => {
+            return format(new Date(date), 'dd/MM/yyyy HH:mm:ss');
+        };
         function prevPage() {
             pageIndex.value = pageIndex.value - 1;
-            fetchListPatient({
+            fetchListHistoryPatient({
                 pageIndex : pageIndex.value ,
-                doctorId: pa,
+                doctorId: doctorId.value,
                 date: new Date(date.value).getTime(),
-                statusId : 'S3'
 
             });
         }
-
-
-
         return {
-            listData,
+            listHistoryData,
             maxDate,
             date,
             dateFormat,
@@ -137,7 +131,8 @@ export default {
             totalPage,
             pageIndex,
             nextPage,
-            prevPage
+            prevPage,
+            formatDate
             
         };
     },

@@ -147,7 +147,6 @@ export default {
                 console.log('sau khi call' ,res);
                 
                 if (res.errCode !== 0) {
-                    console.log('da vao day');
                     error.value = {
                         text: 'Username or password wrong',
                         status: true,

@@ -11,6 +11,9 @@ const store = createStore({
             listGender: [],
             listRole: [],
             listPosition: [],
+            menuItems: [
+                
+            ]
         };
     },
     mutations: {

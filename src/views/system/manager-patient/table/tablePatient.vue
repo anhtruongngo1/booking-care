@@ -126,11 +126,24 @@ export default {
             emitter.emit('eventShowModalConfirm' , email);
 
         }
+        emitter.on('handleListPatient', (value) => {
+            // *Listen* for event
+            if (value === 100) {
+            
+                fetchListPatient({
+                    pageIndex : pageIndex.value ,
+                    doctorId: doctorId.value,
+                    date : new Date(date.value).getTime()
+                });
+           }
+            
+            
+        });
         function nextPage() {
             pageIndex.value = pageIndex.value + 1;
             fetchListPatient({
                 pageIndex : pageIndex.value ,
-                doctorId: pa,
+                doctorId: doctorId.value,
                 date : new Date(date.value).getTime()
             });
 
@@ -139,7 +152,7 @@ export default {
             pageIndex.value = pageIndex.value - 1;
             fetchListPatient({
                 pageIndex : pageIndex.value ,
-                doctorId: pa,
+                doctorId: doctorId.value,
                 date : new Date(date.value).getTime()
             });
         }

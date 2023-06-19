@@ -63,7 +63,6 @@ export default {
             const md = new MarkdownIt();
             html.value = md.render(value);
             doctor.value.contentMarkdown = value;
-            console.log('html', html.value);
         };
         watch(doctorId, async (pa, pb) => {
             const res = await getDetailsDoctor(pa);

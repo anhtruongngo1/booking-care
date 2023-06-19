@@ -62,7 +62,7 @@ export default {
             debounce((pa, pb) => {
                 console.log('check');
                 fetchListUser({q : pa , type :'DOCTOR'})
-            }, 500),
+            }, 300),
         );
 
         getTopdoctor()

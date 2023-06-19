@@ -13,17 +13,17 @@
                 <span class="text-xl"> Lịch khám </span>
             </div>
             <div className="mt-3">
-                <div v-if="dataScheduleDoctor">
+                <div v-if="filteredAppointments">
                     <div className="flex gap-4 flex-wrap">
                         <button
                             @click="handleBtn(item)"
-                            v-for="item in dataScheduleDoctor"
+                            v-for="item in filteredAppointments"
                             :key="item.id"
                             :disabled="item.currentNumber == '1'"
                             class="disabled:bg-slate-500 min-w-[120px] px-3 py-[6px] bg-[#fff04b] rounded font-semibold text-[#333] hover:bg-[#45c3d2]"
                         >
                             <p v-if="local === 'vn'">{{ item.timeTypeData.valueVi }}</p>
-                            <p v-else>{{ item.timeTypeData.valueEn }}</p>
+                            <p v-else>{{ item.timeTypeData.valueVi }} AM</p>
                         </button>
                     </div>
                     <div className="mt-3">
@@ -44,7 +44,7 @@
 <script>
 import i18n from '@/language/i18n';
 import moment from 'moment';
-import { ref, computed, watch, inject } from 'vue';
+import { ref, computed, watch, inject, onMounted } from 'vue';
 import useDoctorSchedule from '@/services/apiDoctorSchedule';
 import { useRoute } from 'vue-router';
 import bookingModal from './bookingModal.vue';
@@ -67,9 +67,11 @@ export default {
         const emitter = inject('emitter');
         emitter.on('handleConfirmbooking', () => {
             getData({ doctorId: idDoctor.value, date: date.value });
-
         });
-   
+        onMounted(() => {
+            getData({ doctorId: props.idDoctor, date: date.value });
+        });
+
         const isShowModal = ref(false);
         const local = computed(() => i18n.global.locale);
         const date = ref(moment(new Date()).add(0, 'days').startOf('day').valueOf());
@@ -117,7 +119,7 @@ export default {
 
         // /////////////////
         const { fetchScheduleDoctor } = useDoctorSchedule();
-        const dataScheduleDoctor = ref('');
+        const dataScheduleDoctor = ref([]);
         async function onChange(event) {
             // Do something with the selected value
             getData({ doctorId: idDoctor.value, date: date.value });
@@ -128,6 +130,15 @@ export default {
                 dataScheduleDoctor.value = res.infor.data;
             }
         };
+        const currentTime = ref(new Date());
+
+        const filteredAppointments = computed(() => {
+            const currentTimeValue = currentTime.value.getTime();
+            return dataScheduleDoctor.value.filter((appointment) => {
+                const appointmentTime = moment(appointment.timeTypeData.valueVi, 'hh:mm A').toDate();
+                return appointmentTime > currentTimeValue;
+            });
+        });
         const handleBtn = (data) => {
             emitter.emit('handleModelBook', {
                 chosseDate: data,
@@ -142,8 +153,9 @@ export default {
             onChange,
             dataScheduleDoctor,
             handleBtn,
-            chosseDate ,
-            idDoctor
+            chosseDate,
+            idDoctor,
+            filteredAppointments,
         };
     },
     components: {

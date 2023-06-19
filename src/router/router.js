@@ -84,6 +84,23 @@ const routes = [
         ]
     },
     {
+        path: "/doctor",
+        name: 'Doctor',
+        meta: {
+            layout : 'auth'
+        } ,
+        component: () => import(/* webpackChunkName : "home" */ "@/views/Doctor/doctor.vue"),
+        children: [
+            {
+                path: 'manager-schedule',
+                  component: () => import(/* webpackChunkName : "home" */ "@/views/Doctor/doctor-schedule/ScheduleDetails.vue"),
+    
+            },
+
+          ],
+
+    },
+    {
         path: "/system",
         name: 'System',
         meta: {
@@ -213,14 +230,12 @@ const router = createRouter({
 })
 router.beforeEach((to, from, next) => {
     // chuyển đến trang login nếu chưa được login
-    const publicPages = [ '/login' ,'/system'];
-    const authRequired = !publicPages.includes(to.path);
+    const publicPages = [ '/system' ,];
+    const authRequired = publicPages.includes(to.path);
     const loggedIn = localStorage.getItem('access_token');
-  
     if (authRequired && !loggedIn) {
       return next('/login');
-    }
-  
+    } 
     next();
   })
 export default router
