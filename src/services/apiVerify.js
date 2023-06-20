@@ -5,8 +5,6 @@ export default function () {
     const handleVerify = async (data) => {
         try {
             const res = await axios.post(`/api/verify-book-appointment`, data);
-            console.log('check' , res)
-
             if (res && res.errCode === 0) {
 
             } else {

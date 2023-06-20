@@ -88,10 +88,11 @@
 </template>
 
 <script>
-import usePatient from '@/services/apiPatient';
-import doctorField from '../../manager-doctor/form/field/doctorField.vue';
 import { ref , watch ,inject } from "vue"
 import moment from 'moment';
+
+import usePatient from '@/services/apiPatient';
+import doctorField from '../../manager-doctor/form/field/doctorField.vue';
 import confirmVue from '../modal/confirm.vue';
 
 export default {

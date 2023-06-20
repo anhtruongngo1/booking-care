@@ -1,7 +1,7 @@
 <template>
     <div class="h-[70px] bg-[#45C3D2] text-white">
         <div class="flex items-center shadow-lg h-full gap-x-2 px-[5%]">
-            <font-awesome-icon :icon="['fass', 'arrow-left']" class="text-2xl cursor-pointer" />
+            <font-awesome-icon @click="handleHome" :icon="['fass', 'arrow-left']" class="text-xl cursor-pointer" />
             <p class="text-2xl">Chuyên khoa</p>
         </div>
     </div>
@@ -9,10 +9,8 @@
         <div
             class="bg-[url(https://cdn.bookingcare.vn/fo/2019/12/13/120331-co-xuong-khop.jpg)] relative object-cover object-center w-full max-h-[500px]"
         >
-        <div class="absolute bg-white bg-opacity-70 top-0 left-0 w-full h-full">
-
-             </div>
-            <div class="px-[10%] relative z-50 ">
+            <div class="absolute bg-white bg-opacity-70 top-0 left-0 w-full h-full"></div>
+            <div class="px-[20%] relative z-50 pt-5">
                 <h2 class="text-xl font-bold">Cơ xương khớp</h2>
                 <div>
                     Bác sĩ Cơ Xương Khớp giỏi Danh sách các bác sĩ uy tín đầu ngành Cơ Xương Khớp tại Việt Nam: Các
@@ -28,35 +26,47 @@
                 </div>
             </div>
         </div>
-        <div class="bg-[#EEEEEE] px-[10%] flex">
-            <div>
-                   <detailsDoctorVue />
-                 </div>
-                 <div>
-                    <DoctorSchedule />
-                    <DoctorExtraInforVue />
-                     </div>
-
-             </div>
+        <div class="bg-[#EEEEEE] px-[20%] pt-[3%] flex flex-col gap-y-6">
+            <div v-for="item in listData" :key="item.id" class="flex justify-between">
+                <div class="w-[50%] bg-white rounded-tl-2xl rounded-bl-2xl">
+                    <detailsDoctorVue v-bind:userId="item.User.id" />
+                </div>
+                <div class="w-[50%] bg-white rounded-tr-2xl rounded-br-2xl py-10">
+                    <DoctorSchedule v-bind:idDoctor="item.User.id" />
+                    <DoctorExtraInforVue v-bind:idDoctor="item.User.id" />
+                </div>
+            </div>
+        </div>
     </main>
 </template>
 
 <script>
+import { useRoute } from 'vue-router';
 import DoctorExtraInforVue from '@/views/Home/Doctor/DoctorExtraInfor.vue';
 import DoctorSchedule from '@/views/Home/Doctor/DoctorSchedule.vue';
 import detailsDoctorVue from '@/views/HomeDetails/specialty/detailDoctor.vue';
+import useDoctorBySpecial from '@/services/apiAllDoctorBySpecial';
+
 export default {
     setup() {
+        const route = useRoute();
+        const handleHome = () => {
+            window.history.back();
+        };
+        const { fetchDoctorBySpecial, listData, totalPage } = useDoctorBySpecial();
+
+        fetchDoctorBySpecial({ pageIndex: '0', specialId: route.params.id });
 
         return {
-
-        }
+            listData,
+            handleHome,
+        };
     },
     components: {
         DoctorExtraInforVue,
         DoctorSchedule,
-        detailsDoctorVue
-    }
+        detailsDoctorVue,
+    },
 };
 </script>
 

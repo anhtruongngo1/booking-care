@@ -24,6 +24,9 @@
 </template>
 
 <script>
+import {useLoading} from 'vue-loading-overlay'
+import { reactive, ref, inject } from 'vue';
+
 import addressFieldVue from './Field/addressField.vue';
 import emailField from './Field/emailField.vue';
 import firstNameField from './Field/firstNameField.vue';
@@ -33,13 +36,10 @@ import PhoneFieldVue from './Field/PhoneField.vue.vue';
 import genderField from './Field/genderField.vue';
 import roleField from './Field/roleField.vue';
 import positionFieldVue from './Field/positionField.vue';
-import { reactive, ref, inject } from 'vue';
 import imageFieldVue from './Field/imageField.vue';
 import useSubmitButtonState from '../../../../components/validate/UseSubmitButtonState';
 import useFormValidation from '../../../../components/validate/FormValidation';
 import useUser from '@/services/createUser';
-import {useLoading} from 'vue-loading-overlay'
-
 export default {
     setup() {
         let user = reactive({

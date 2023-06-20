@@ -3,7 +3,7 @@
         <div class="pt-[3%]">
             <p class="text-xl font-black text-[#0071BA]">DANH SÁCH CÁC BLOG</p>
         </div>
-        <handbookBarVue />
+        <postBarVue />
         <div class="min-h-[56%]  shadow-md">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -80,15 +80,17 @@
 </template>
 
 <script>
+import { useStore } from 'vuex';
 import useBlog from '@/services/apiListBlog';
 import useActionBlog from "@/services/apiBlogs"
 import { format } from 'date-fns';
-import {ref , inject} from "vue"
-import handbookBarVue from './handbookBar.vue';
+import {ref , inject , computed} from "vue"
 import router from '@/router/router';
-
+import postBarVue from './postBar.vue';
 export default {
     setup() {
+        const store = useStore();
+        const profile = computed(() => store.state.profile);
         const { errorData, fetchListBlog, listData , totalPage } = useBlog();
         const {deleteBlog , messege} = useActionBlog()
         const now = new Date('2023-05-05T08:21:46.000Z');
@@ -96,7 +98,7 @@ export default {
         const emitter = inject('emitter');
         const textSearch = ref('')
         const swal = inject('$swal');
-        fetchListBlog({pageIndex : pageIndex.value});
+        fetchListBlog({pageIndex : pageIndex.value , userId : profile.value.id });
         const formatDate = (date) => {
             return format(new Date(date), 'dd/MM/yyyy HH:mm:ss');
         };
@@ -161,9 +163,7 @@ export default {
             router.push(`/system/manager-handbook/create-handbook/${id}`)
         }
         emitter.on('handleSearchBlog', (value) => {
-            fetchListBlog({
-                q : value
-            });
+            fetchListBlog({pageIndex : pageIndex.value , userId : profile.value.id  , q : value});
             textSearch.value = value
         });
         return {
@@ -172,7 +172,7 @@ export default {
         };
     },
     components: {
-        handbookBarVue
+        postBarVue
     }
 };
 </script>

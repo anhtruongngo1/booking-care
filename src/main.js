@@ -9,7 +9,8 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import VueDatePicker from '@vuepic/vue-datepicker';
 import {LoadingPlugin} from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css';
-
+import VueTippy from 'vue-tippy'
+import 'tippy.js/dist/tippy.css'
 import App from './App.vue'
 import router from "./router/router"
 import './assets/main.css'
@@ -23,6 +24,10 @@ const emitter = mitt();
 library.add(fas, far, fab)
 const app = createApp(App)
 
+
+
+
+
 registerGlobalComponents(app)
 
 app.component("font-awesome-icon", FontAwesomeIcon)
@@ -30,6 +35,18 @@ app.component('VueDatePicker', VueDatePicker);
 app.use(LoadingPlugin);
 app.use(i18n)
 app.use(store)
+app.use(
+    VueTippy,
+    {
+      directive: 'tippy',
+      component: 'tippy',
+      componentSingleton: 'tippy-singleton',
+      defaultProps: {
+        placement: 'auto-end',
+        allowHTML: true,
+      }, 
+    }
+  )
 app.use(VueSweetalert2);
 app.provide('emitter', emitter);
 app.use(router)

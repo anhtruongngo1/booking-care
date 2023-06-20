@@ -44,37 +44,37 @@
 
                 <div class="text-end">
                     <button
-                    type="submit"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                >
-                    Save
-                </button>
-                     </div>
+                        type="submit"
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                    >
+                        Save
+                    </button>
+                </div>
             </form>
         </div>
     </div>
 </template>
 
 <script>
+import { ref, inject } from 'vue';
+import { useLoading } from 'vue-loading-overlay';
+
 import markdown from '../../manager-doctor/form/markdown/markdown.vue';
 import imageField from '../../manager-user/form/Field/imageField.vue';
 import useClinic from '@/services/createClinic';
-import { ref, inject } from 'vue';
-import {useLoading} from 'vue-loading-overlay'
-
 export default {
     setup() {
         const name = ref('');
         const description = ref('');
         const image = ref('');
-        const address = ref('')
+        const address = ref('');
         const preview = ref('');
         const isShowClinic = ref(false);
         const swal = inject('$swal');
         const $loading = useLoading({
-        // options
-        color :'#009B00'
-    });
+            // options
+            color: '#009B00',
+        });
         const { handleCreateClinic } = useClinic();
 
         function previewImage(event) {
@@ -96,49 +96,48 @@ export default {
             isShowClinic.value = !isShowClinic.value;
         }
         const Toast = swal.mixin({
-              toast: true,
-              position: 'top-end',
-              showConfirmButton: false,
-              timer: 3000,
-              timerProgressBar: true,
-              didOpen: (toast) => {
-                  toast.addEventListener('mouseenter', swal.stopTimer);
-                  toast.addEventListener('mouseleave', swal.resumeTimer);
-              },
-          });
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', swal.stopTimer);
+                toast.addEventListener('mouseleave', swal.resumeTimer);
+            },
+        });
         async function handleSave() {
             const loader = $loading.show({
-            // Optional parameters
-        });
+                // Optional parameters
+            });
             const res = await handleCreateClinic({
                 name: name.value,
                 description: description.value,
                 image: image.value,
-                address : address.value
+                address: address.value,
             });
             if (res && res.errCode === 0) {
-                loader.hide()
+                loader.hide();
                 emitter.emit('eventHandleClinic');
-                handleShow()
+                handleShow();
                 Toast.fire({
                     icon: 'success',
-                    title: "Tạo mới thành công",
-        });
+                    title: 'Tạo mới thành công',
+                });
             } else {
-                loader.hide()
+                loader.hide();
 
                 Toast.fire({
                     icon: 'error',
-                    title: "Tạo mới thất bại",
-        });
+                    title: 'Tạo mới thất bại',
+                });
             }
         }
         const emitter = inject('emitter');
 
         emitter.on('eventShowModalClinic', () => {
             // *Listen* for event
-            console.log('checkkk');
-            handleShow()
+            handleShow();
         });
         return {
             description,
@@ -146,10 +145,10 @@ export default {
             preview,
             image,
             name,
-            address ,
+            address,
             handleSave,
             handleShow,
-            isShowClinic
+            isShowClinic,
         };
     },
     components: {

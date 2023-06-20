@@ -45,11 +45,11 @@
 </template>
 
 <script>
-import useDoctor from "@/services/apiTopDoctor"
-import useDoctorSearch from "@/services/apiListUser"
 import { ref , watch } from "vue"
 import debounce from 'lodash.debounce';
 
+import useDoctor from "@/services/apiTopDoctor"
+import useDoctorSearch from "@/services/apiListUser"
 export default {
     setup() {
         const { dataDoctor, errorData, getTopdoctor } = useDoctor()
@@ -60,7 +60,6 @@ export default {
         watch(
             keySearch,
             debounce((pa, pb) => {
-                console.log('check');
                 fetchListUser({q : pa , type :'DOCTOR'})
             }, 300),
         );

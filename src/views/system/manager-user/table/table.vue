@@ -159,7 +159,6 @@ export default {
             router.push(`/system/manager-account/${id}`);
         }
         function handleOption(option , key) {
-                    console.log('call api option' , option , key);
         }
         emitter.on('myevent', (value) => {
             // *Listen* for event

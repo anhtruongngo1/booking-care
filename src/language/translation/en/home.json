@@ -4,23 +4,23 @@
         "specialty": "Find a doctor by specialty",
         "Health": "Health facilities",
         "hospital": "Choose hospital clinic",
-        "doctor": " doctor",
+        "doctor": " Doctor",
         "Choosedoctor": "Choose a good doctor",
-        "package": "package",
+        "package": "Package",
         "Generalcheck": "General health check",
         "Support": "Support",
         "ExaminationSpecialist": "Examination Specialist",
-        "remoteexamination": "remote examination",
-        "generalexamination": "general examination",
-        "medicaltest": " medical test",
-        "mentalhealth": "mental health",
-        "dentalexamination": "dental examination",
-        "surgerypackage": "surgery package",
-        "medicalproducts": "medical products",
-        "Healthbusiness": "sức khỏe doanh nghiệp",
+        "remoteexamination": "Remote examination",
+        "generalexamination": "General examination",
+        "medicaltest": " Medical test",
+        "mentalhealth": "Mental health",
+        "dentalexamination": "Dental examination",
+        "surgerypackage": "Surgery package",
+        "medicalproducts": "Medical products",
+        "Healthbusiness": "Business health",
         "MEDICALBACKGROUND": "MEDICAL BACKGROUND",
         "COMPREHENSIVEHEALTHCARE": "COMPREHENSIVE HEALTH CARE",
-        "welcome": "welcome",
+        "welcome": "Welcome",
         "popular-specialty": "Popular specialty",
         "top-facilities": "Outstanding medical facility"
     },
@@ -28,6 +28,7 @@
         "admin": {
             "user": "user",
             "manage-user": " user management",
+            "manage-account": "account management",
             "manage-doctor": " doctor management",
             "manage-admin": "admin management",
             "crud": "CRUD user",
@@ -42,6 +43,7 @@
         "doctor": {
             "titleHeader" : "Doctor" ,
             "manage-user": "User",
+            "blog" : "Posts" ,
             "manage-schedule": "Schedule management",
             "manage-patient": "Manage appointment  ",
             "manage-history": "Medical examination history  "
@@ -75,7 +77,8 @@
         "manager-appointments" : "MANAGE MEDICAL APPOINTMENTS " ,
         "listClinic" : "LIST OF FACILITIES" ,
         "listDoctor" : "LIST OF DOCTORS"    ,
-        "listSpecial" : "LIST OF SPECIALISTS"
+        "listSpecial" : "LIST OF SPECIALISTS" ,
+        "topDoctor"  : "Outstanding Doctor of the Week"
   
     },
     "label": {

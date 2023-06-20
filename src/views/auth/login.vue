@@ -143,9 +143,7 @@ export default {
              const res =  await fetchLogin({
                     email: Username.value,
                     password: Password.value,
-                });
-                console.log('sau khi call' ,res);
-                
+                });               
                 if (res.errCode !== 0) {
                     error.value = {
                         text: 'Username or password wrong',

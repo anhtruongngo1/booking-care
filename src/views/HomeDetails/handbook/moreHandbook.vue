@@ -8,7 +8,11 @@
                 </p>
             </div>
 
-            <div v-for="item in listData" :key="item.id" class="comments-wrapper border-solid border-2 border-[#e8e8e8] rounded-xl mb-5">
+            <div
+                v-for="item in listData"
+                :key="item.id"
+                class="comments-wrapper border-solid border-2 border-[#e8e8e8] rounded-xl mb-5"
+            >
                 <router-link :to="`/handbook/${item.id}`" class="comment p-10 cursor-pointer block">
                     <div class="comment-user-info flex justify-between mb-5">
                         <div class="left flex">
@@ -25,7 +29,7 @@
                         <div class="w-full">
                             <h1 class="header-title text-2xl font-bold">{{ item.title }}</h1>
                             <p class="mt-2 line-clamp-2">
-                               {{ item.content }}
+                                {{ item.content }}
                             </p>
                         </div>
                         <div class="w-[20%]">
@@ -34,25 +38,22 @@
                     </div>
                 </router-link>
             </div>
-
-         
         </div>
     </div>
 </template>
 
 <script>
-import useHandBook from "@/services/apiListBlog"
+import useHandBook from '@/services/apiListBlog';
 
 export default {
-
     setup() {
-        const {errorData , fetchListBlog , listData} = useHandBook()
+        const { errorData, fetchListBlog, listData } = useHandBook();
 
-        fetchListBlog({pageIndex : 0})
+        fetchListBlog({ pageIndex: 0 });
         return {
-            listData
-        }
-    }
+            listData,
+        };
+    },
 };
 </script>
 

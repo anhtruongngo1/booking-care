@@ -3,17 +3,19 @@
         <!-- Modal backdrop -->
         <div v-show="isShowModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center z-10">
             <!-- Modal content -->
-            <div  @click="handleShow" class="relative top-0 left-0 w-full h-full">
-
-            </div>
-            <div class="bg-white rounded-lg p-6 max-w-[1440px] w-[50%] overflow-y-auto absolute top-0 left-0 right-0 bottom-0 m-auto h-[90%] py-8  ">
+            <div @click="handleShow" class="relative top-0 left-0 w-full h-full"></div>
+            <div
+                class="bg-white rounded-lg p-6 max-w-[1440px] w-[50%] overflow-y-auto absolute top-0 left-0 right-0 bottom-0 m-auto h-[90%] py-8"
+            >
                 <!-- Modal header -->
                 <h2 class="text-lg font-bold mb-4 text-center">Thông tin đặt lịch khám</h2>
                 <!-- Modal body -->
                 <div><profileDoctor v-bind:time="chooseData.chosseDate" :idDoctor="idDoctor" /></div>
                 <form @submit.prevent="handleSubmit">
                     <div class="mb-4">
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white " for="name"> Họ tên </label>
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="name">
+                            Họ tên
+                        </label>
                         <input
                             class="shadow appearance-none border rounded w-[80%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="name"
@@ -24,7 +26,9 @@
                         />
                     </div>
                     <div class="mb-4">
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white " for="phone"> Số điện thoại </label>
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="phone">
+                            Số điện thoại
+                        </label>
                         <input
                             class="shadow appearance-none border rounded w-[80%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="phone"
@@ -35,7 +39,9 @@
                         />
                     </div>
                     <div class="mb-4">
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white " for="address"> Địa chỉ Liên hệ </label>
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="address">
+                            Địa chỉ Liên hệ
+                        </label>
                         <input
                             class="shadow appearance-none border rounded w-[80%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="address"
@@ -46,7 +52,9 @@
                         />
                     </div>
                     <div class="mb-4">
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white " for="address"> Địa chỉ Mail </label>
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="address">
+                            Địa chỉ Mail
+                        </label>
                         <input
                             class="shadow appearance-none border rounded w-[80%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="address"
@@ -57,7 +65,9 @@
                         />
                     </div>
                     <div class="mb-4">
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white " for="dob"> Ngày sinh </label>
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="dob">
+                            Ngày sinh
+                        </label>
                         <input
                             class="shadow appearance-none border rounded w-[80%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="dob"
@@ -67,7 +77,9 @@
                         />
                     </div>
                     <div class="mb-4">
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="gender"> Giới tính </label>
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="gender">
+                            Giới tính
+                        </label>
                         <select
                             class="shadow appearance-none border rounded w-[80%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="gender"
@@ -93,7 +105,12 @@
                         ></textarea>
                     </div>
                     <div class="mb-4">
-                      <button type="submit" class="float-right text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">SAVE</button>
+                        <button
+                            type="submit"
+                            class="float-right text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                        >
+                            SAVE
+                        </button>
                     </div>
                 </form>
             </div>
@@ -102,112 +119,118 @@
 </template>
 
 <script>
-import profileDoctor from './profileDoctor.vue';
-import { ref , watch , inject} from "vue"
-import useBooking from "@/services/apiBooking"
+import { ref, watch, inject } from 'vue';
 import moment from 'moment';
-import {useLoading} from 'vue-loading-overlay'
+import { useLoading } from 'vue-loading-overlay';
 import { useRoute } from 'vue-router';
 
+import profileDoctor from './profileDoctor.vue';
+import useBooking from '@/services/apiBooking';
+
 export default {
-  props: {
+    props: {
         dataDate: String,
-        idDoctor : String
-  },
-  setup(props) {
-
-    const $loading = useLoading({
-        // options
-        color :'#009B00'
-    });
-
-    const idDoctor = ref('')
-    const name = ref('')
-    const phone = ref('')
-    const email = ref('')
-    const address = ref('')
-    const date = ref('')
-    const gender = ref('M')
-    const reason = ref('')
-    const isShowModal = ref(false)
-    const emitter = inject('emitter');
-    const swal = inject('$swal');
-      const chooseData = ref('')
-      const route = useRoute();
-
-    watch(() => props.isShowModal, (pa, pb) => {
-      isShowModal.value = pa
-    })
-    watch(() => props.idDoctor, (pa, pb) => {
-        idDoctor.value = pa
-    })
-    const Toast = swal.mixin({
-              toast: true,
-              position: 'top-end',
-              showConfirmButton: false,
-              timer: 3000,
-              timerProgressBar: true,
-              didOpen: (toast) => {
-                  toast.addEventListener('mouseenter', swal.stopTimer);
-                  toast.addEventListener('mouseleave', swal.resumeTimer);
-              },
-          });
-    const { createBooking } = useBooking()
-    // moment.unix(1656090000000 / 1000).format('dddd - DD/MM/YYYY')
-    const handleSubmit = async () => {
-      const loader = $loading.show({
-            // Optional parameters
+        idDoctor: String,
+    },
+    setup(props) {
+        const $loading = useLoading({
+            // options
+            color: '#009B00',
         });
-      const res = await createBooking({
-        doctorId: idDoctor.value,
-        email: email.value,
-        address: address.value,
-        timeString: chooseData.value.chosseDate.timeTypeData.valueVi + '' +  moment.unix(chooseData.value.dataDate / 1000).format('dddd - DD/MM/YYYY'),
-        fullName: name.value,
-        phoneNumber: phone.value,
-        reason: reason.value,
-        birthDay: date.value,
-        timeType: chooseData.value.chosseDate.timeType,
-        selectedGender: gender.value,
-        doctorName: chooseData.value.chosseDate.doctorData.lastName + chooseData.value.chosseDate.doctorData.firstName,
-        date : chooseData.value.dataDate
 
-      })
-      if (res && res.infor.errCode === 0) {
-        loader.hide()
-        Toast.fire({
+        const idDoctor = ref('');
+        const name = ref('');
+        const phone = ref('');
+        const email = ref('');
+        const address = ref('');
+        const date = ref('');
+        const gender = ref('M');
+        const reason = ref('');
+        const isShowModal = ref(false);
+        const emitter = inject('emitter');
+        const swal = inject('$swal');
+        const chooseData = ref('');
+        const route = useRoute();
+
+        watch(
+            () => props.isShowModal,
+            (pa, pb) => {
+                isShowModal.value = pa;
+            },
+        );
+        watch(
+            () => props.idDoctor,
+            (pa, pb) => {
+                idDoctor.value = pa;
+            },
+        );
+        const Toast = swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', swal.stopTimer);
+                toast.addEventListener('mouseleave', swal.resumeTimer);
+            },
+        });
+        const { createBooking } = useBooking();
+        // moment.unix(1656090000000 / 1000).format('dddd - DD/MM/YYYY')
+        const handleSubmit = async () => {
+            const loader = $loading.show({
+                // Optional parameters
+            });
+            const res = await createBooking({
+                doctorId: idDoctor.value,
+                email: email.value,
+                address: address.value,
+                timeString:
+                    chooseData.value.chosseDate.timeTypeData.valueVi +
+                    '' +
+                    moment.unix(chooseData.value.dataDate / 1000).format('dddd - DD/MM/YYYY'),
+                fullName: name.value,
+                phoneNumber: phone.value,
+                reason: reason.value,
+                birthDay: date.value,
+                timeType: chooseData.value.chosseDate.timeType,
+                selectedGender: gender.value,
+                doctorName:
+                    chooseData.value.chosseDate.doctorData.lastName + chooseData.value.chosseDate.doctorData.firstName,
+                date: chooseData.value.dataDate,
+            });
+            if (res && res.infor.errCode === 0) {
+                loader.hide();
+                Toast.fire({
                     icon: 'success',
-                    title: "Đặt lịch thành công ! vui lòng xác nhận email để chấp nhận",
-        });
-        emitter.emit('handleConfirmbooking');
-                isShowModal.value = false
-        }
-
-    }
-    const handleShow = () => {
-      isShowModal.value = false
-
-    }
-    emitter.on('handleModelBook', (data) => {
+                    title: 'Đặt lịch thành công ! vui lòng xác nhận email để chấp nhận',
+                });
+                emitter.emit('handleConfirmbooking');
+                isShowModal.value = false;
+            }
+        };
+        const handleShow = () => {
+            isShowModal.value = false;
+        };
+        emitter.on('handleModelBook', (data) => {
             // *Listen* for event
-      isShowModal.value = true
-      chooseData.value = data
+            isShowModal.value = true;
+            chooseData.value = data;
         });
-      
-    return {
-      name,
-      email ,
-      phone,
-      address,
-      handleShow ,
-      date,
-      gender,
-      reason,
-      isShowModal,
-      handleSubmit,
-        chooseData,
-      idDoctor
-          
+
+        return {
+            name,
+            email,
+            phone,
+            address,
+            handleShow,
+            date,
+            gender,
+            reason,
+            isShowModal,
+            handleSubmit,
+            chooseData,
+            idDoctor,
         };
     },
     components: {

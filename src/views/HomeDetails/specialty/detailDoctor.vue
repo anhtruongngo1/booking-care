@@ -1,5 +1,5 @@
 <template>
-    <div className="h-[500px] pb-[100px]">
+    <div className="">
         <div className="mx-[10%] flex pt-[50px]">
             <div className="">
                 <img className="w-[120px] h-[120px] rounded-[50%] object-cover object-center" :src="listData.image" />
@@ -9,36 +9,45 @@
                 <div className="pt-2">
                     <span>
                         {{ listData.Markdown.description }}
-        
                     </span>
                 </div>
             </div>
-        </div>   
+        </div>
     </div>
-
 </template>
 
 <script>
-import useDoctor from '@/services/apiDetailDoctor';
 import { useRoute } from 'vue-router';
 import MarkdownIt from 'markdown-it';
-import { ref, watchEffect } from 'vue';
+import { ref, watchEffect, watch } from 'vue';
+import useDoctor from '@/services/apiDetailDoctor';
 export default {
-    setup() {
+    props: {
+        userId: String,
+    },
+    setup(props) {
         const route = useRoute();
+        const doctorId = ref('');
+        watch(
+            () => props.userId,
+            (pa, pb) => {
+                handleData(pa);
+            },
+        );
         const { getDetailsDoctor } = useDoctor();
-    const listData = ref({ Markdown: {
-      description: '',
-      contentHTML : ''
-          }});
-
-        const handleData = async () => {
-            const res = await getDetailsDoctor(route.params.id);
+        const listData = ref({
+            Markdown: {
+                description: '',
+                contentHTML: '',
+            },
+        });
+        const handleData = async (id) => {
+            const res = await getDetailsDoctor(id);
             if (res && res.errCode === 0) {
                 listData.value = res.data;
             }
         };
-        handleData();
+        handleData(props.userId);
 
         const md = new MarkdownIt();
         const convertedMarkdown = ref(md.render(''));
@@ -54,16 +63,12 @@ export default {
             convertedMarkdown,
         };
     },
-    components: {
-        DoctorSchedule,
-      DoctorExtraInfor,
-
-    },
+    components: {},
 };
 </script>
 
 <style>
 li {
-  list-style-type: disc;
+    list-style-type: disc;
 }
 </style>

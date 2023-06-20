@@ -2,7 +2,7 @@
     <button
         @click="handleEdit"
         v-if="handleBtn"
-        :disabled="actions===false"
+        :disabled="actions===true"
         className="disabled:opacity-60 bg-orange-400 py-[8px] px-[5px] rounded-md my-[15px] min-w-[75px]"
     >
     {{ $t('button.edit')}}
@@ -11,7 +11,7 @@
     <button
         v-else
         @click="handleSave"
-        :disabled="actions === false"
+        
         className="disabled:opacity-60 bg-orange-400 py-[8px] px-[5px] rounded-md my-[15px] min-w-[75px]"
     >
     {{ $t('button.addnew')}}
@@ -60,7 +60,6 @@ export default {
                 contentHTML: props.doctor.contentMarkdown,
           });
             if (editEvent && editEvent.errCode === 0) {
-                console.log('đã vào đây');
                 Toast.fire({
                     icon: 'success',
                     title: 'Edit thành công',
@@ -98,7 +97,6 @@ export default {
                     title: res.errMessage,
                 });
             }
-            console.log('check' ,props.doctor.contentMarkdown );
         };
                 // event
  

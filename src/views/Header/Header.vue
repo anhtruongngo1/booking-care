@@ -80,7 +80,6 @@ export default {
 
        function callSetLangActions(lang){
          store.dispatch("setLang", lang)
-        console.log('check' , lang);
         }
 
         return {

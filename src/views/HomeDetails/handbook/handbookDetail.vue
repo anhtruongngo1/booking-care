@@ -16,25 +16,42 @@
                 {{ formatDate(dataDetail.updatedAt) }}
             </div>
         </div>
-        <div class="bg-[#FCFAF6] px-[10%] mx-[10%] mt-20">
-            {{ dataDetail.content }}
+        <div v-html="convertedMarkdown" class="bg-[#FCFAF6] px-[10%] mx-[10%] mt-20 comment-doctor list-disc pt-8">
+       
         </div>
     </div>
 </template>
 
 <script>
-import useBlog from '@/services/apiDetailBlog';
 import { useRoute } from 'vue-router';
 import { format } from 'date-fns';
-import router from '@/router/router';
-import {watch} from "vue"
+import {watch , watchEffect , ref} from "vue"
+import MarkdownIt from 'markdown-it';
+
+import useBlog from '@/services/apiDetailBlog';
+
+
 
 export default {
     setup() {
-        const { dataDetail, fetchDetailBlog } = useBlog();
+        const { fetchDetailBlog } = useBlog();
         const route = useRoute();
         const routeName = route.name;
-        fetchDetailBlog(route.params.id);
+        const dataDetail = ref({
+            content: '',
+            User: {
+                firstName: '',
+                lastName : ''
+            }
+        })
+        
+        const handleData = async () => {
+            const res = await fetchDetailBlog(route.params.id);;
+            if (res && res.errCode === 0) {
+                dataDetail.value = res.blog;
+            }
+        };
+        handleData();
         const formatDate = (date) => {
             return format(new Date(date), 'dd/MM/yyyy HH:mm:ss');
         };
@@ -44,13 +61,18 @@ export default {
         watch(
             () => route,
             (to, from) => {
-                // Cập nhật giao diện
-                console.log('watch callback triggered');
-
             },
         );
+        const md = new MarkdownIt();
+        const convertedMarkdown = ref(md.render(''));
+        watchEffect(() => {
+            if (dataDetail.value) {
+                convertedMarkdown.value = md.render(dataDetail.value.content);
+            }
+        });
         return {
             dataDetail,
+            convertedMarkdown ,
             formatDate,
             handleHome,
             routeName,
@@ -59,4 +81,7 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+li {
+  list-style-type: disc;
+}</style>

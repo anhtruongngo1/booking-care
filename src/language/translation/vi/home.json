@@ -1,26 +1,26 @@
 {
     "homeheader": {
         "Specialist": "Chuyên khoa",
-        "specialty": "tìm bác sĩ theo chuyên khoa",
-        "Health": "cơ sỡ y tế",
-        "hospital": "chọn bệnh viện phòng khám",
-        "doctor": "bác sĩ",
-        "Choosedoctor": " chọn bác sĩ giỏi",
-        "package": "gói khám",
-        "Generalcheck": " chọn gói khám",
-        "Support": "hổ trợ",
-        "ExaminationSpecialist": "khám chuyên khoa",
-        "remoteexamination": "khám từ xa",
-        "generalexamination": "khám tổng quát",
-        "medicaltest": " xét nghiệm y học",
-        "mentalhealth": "sức khỏe tinh thần",
-        "dentalexamination": "khám nha khoa",
-        "surgerypackage": "gói phẩu thuật",
-        "medicalproducts": "sản phẩm y tế",
-        "Healthbusiness": "sức khỏe doanh nghiệp",
+        "specialty": "Tìm bác sĩ theo chuyên khoa",
+        "Health": "Cơ sỡ y tế",
+        "hospital": "Chọn bệnh viện phòng khám",
+        "doctor": "Bác sĩ",
+        "Choosedoctor": " Chọn bác sĩ giỏi",
+        "package": "Gói khám",
+        "Generalcheck": " Chọn gói khám",
+        "Support": "Hổ trợ",
+        "ExaminationSpecialist": "Khám chuyên khoa",
+        "remoteexamination": "Khám từ xa",
+        "generalexamination": "Khám tổng quát",
+        "medicaltest": "Xét nghiệm y học",
+        "mentalhealth": "Sức khỏe tinh thần",
+        "dentalexamination": "Khám nha khoa",
+        "surgerypackage": "Gói phẩu thuật",
+        "medicalproducts": "Sản phẩm y tế",
+        "Healthbusiness": "Sức khỏe doanh nghiệp",
         "MEDICALBACKGROUND": "NỀN TẢN Y TẾ",
         "COMPREHENSIVEHEALTHCARE": "CHĂM SÓC SỨC KHỎE TOÀN DIỆN",
-        "welcome": "xin chào",
+        "welcome": "Xin chào",
         "popular-specialty": "Chuyên khoa phố biến",
         "top-facilities": "Cơ sỡ y tế nổi bật"
     },
@@ -56,6 +56,7 @@
         },
     "doctor": {
             "titleHeader" : "Bác sĩ" ,
+            "blog" : "Bài viết" ,
             "manage-user": "người dùng",
             "manage-schedule": "Quản lí kế hoạch khám bệnh ",
             "manage-patient": "Quản lí bệnh nhân khám bệnh  ",
@@ -82,7 +83,7 @@
         "next": "Tiếp",
         "more": "Xem thêm" ,
         "delete" : "Xóa" ,
-        "edit"   : "Chĩnh sửa" ,
+        "edit"   : "Chỉnh sửa" ,
         "complete" : "Hoàn thành"
      },
     "home": {
@@ -93,7 +94,8 @@
         "manager-appointments" : "QUẢN LÍ LỊCH KHÁM BỆNH",
         "listClinic" : "DANH SÁCH CÁC CƠ SỠ" ,
         "listDoctor" : "DANH SÁCH CÁC BÁC SĨ",
-        "listSpecial" : "DANH SÁCH CÁC CHUYÊN KHOA"
+        "listSpecial" : "DANH SÁCH CÁC CHUYÊN KHOA" ,
+        "topDoctor" : "Bác sĩ nổi bật tuần qua"
 
 
 

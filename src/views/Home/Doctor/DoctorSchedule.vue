@@ -1,7 +1,7 @@
 <template>
-    <div className="h-full border-r-[1px] border-solid border-red-500">
+    <div className=" ">
         <div className="all-schedule">
-            <select v-model="date" class="py-3 text-[#45c3d2] font-semibold underline outline-none" @change="onChange">
+            <select v-model="date" class="py-3 text-[#337ab7] font-semibold underline outline-none" @change="onChange">
                 <option class="cursor-pointer" v-for="item in allDays" :key="item.id" :value="item.value">
                     {{ item.label }}
                 </option>
@@ -42,11 +42,11 @@
 </template>
 
 <script>
-import i18n from '@/language/i18n';
 import moment from 'moment';
 import { ref, computed, watch, inject, onMounted } from 'vue';
 import useDoctorSchedule from '@/services/apiDoctorSchedule';
-import { useRoute } from 'vue-router';
+import i18n from '@/language/i18n';
+
 import bookingModal from './bookingModal.vue';
 
 export default {
@@ -56,7 +56,6 @@ export default {
 
     setup(props) {
         const idDoctor = ref('');
-
         watch(
             () => props.idDoctor,
             (pa, pb) => {
@@ -136,9 +135,8 @@ export default {
             const currentTimeValue = currentTime.getTime();
             return dataScheduleDoctor.value.filter((appointment) => {
                 if (appointment.date > currentTime) {
-                    return true; 
+                    return true;
                 } else {
-                    
                     const appointmentTime = moment(appointment.timeTypeData.valueVi, 'hh:mm A').toDate();
                     return appointmentTime > currentTimeValue;
                 }

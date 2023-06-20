@@ -43,10 +43,11 @@
 </template>
 
 <script>
-import markdown from '../../manager-doctor/form/markdown/markdown.vue';
-import useSpecial from '@/services/editSpecial';
 import { ref, inject } from 'vue';
 import {useLoading} from 'vue-loading-overlay'
+
+import markdown from '../../manager-doctor/form/markdown/markdown.vue';
+import useSpecial from '@/services/editSpecial';
 import imageFieldSpecialVue from './imageFieldSpecial.vue';
 
 export default {
@@ -65,7 +66,6 @@ export default {
         const { handleEditSpecialty } = useSpecial();
 
         function previewImage2(event) {
-            console.log('check2');
             var input = event.target;
             image.value = event.target.files[0];
             if (input.files) {

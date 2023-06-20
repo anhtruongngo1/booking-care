@@ -24,6 +24,10 @@
 </template>
 
 <script>
+import { useLoading } from 'vue-loading-overlay'
+import { useRoute } from 'vue-router';
+import { reactive, ref, inject, watch } from 'vue';
+
 import addressFieldVue from './Field/addressField.vue';
 import emailField from './Field/emailField.vue';
 import firstNameField from './Field/firstNameField.vue';
@@ -33,14 +37,13 @@ import PhoneFieldVue from './Field/PhoneField.vue.vue';
 import genderField from './Field/genderField.vue';
 import roleField from './Field/roleField.vue';
 import positionFieldVue from './Field/positionField.vue';
-import { reactive, ref, inject, watch } from 'vue';
 import imageFieldVue from './Field/imageField.vue';
 import useSubmitButtonState from '../../../../components/validate/UseSubmitButtonState';
 import useFormValidation from '../../../../components/validate/FormValidation';
 import useUserEdit from '@/services/edituser';
-import { useRoute } from 'vue-router';
 import useProfile from '@/services/profileUser';
-import {useLoading} from 'vue-loading-overlay'
+
+
 
 export default {
     setup() {
@@ -90,7 +93,6 @@ export default {
         if (route.params.id) {
             handleData(route.params.id);
             watch(route, (pa, pb) => {
-                console.log('check ', pa.params.id);
                 handleData(pa.params.id);
             });
         }

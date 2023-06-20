@@ -27,14 +27,9 @@ export default {
         });
         const handleConfirmToken = async()  =>{
             const res = await handleVerify({ token: token })
-            console.log('check ' , res)
             if (res && res.infor.errCode === 0) {
                 isPageReload.value = "XÁC NHẬN ĐẶT LỊCH THÀNH CÔNG"
-                console.log('thành công')
-
             } else {
-                console.log('vào bên có lỗi')
-
            }
         }
         

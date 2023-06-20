@@ -33,30 +33,24 @@ const routes = [
     {
         path: "/handbook",
         name: 'handbook',
-        // meta: {
-        //     layout : 'default'
-        // } ,
         component: () => import(/* webpackChunkName : "home" */ "@/views/HomeDetails/handbook/handbookAll.vue"),
         children: [
             {
-
               path: '',
                 component: () => import(/* webpackChunkName : "home" */ "@/views/HomeDetails/handbook/moreHandbook.vue"),
-
             },
             {
                 path: ':id',
-                component :() =>import("@/views/HomeDetails/handbook/handbookDetail.vue")
-                
+                component :() =>import("@/views/HomeDetails/handbook/handbookDetail.vue")           
             }
         ]
     },
     {
         path: "/doctor",
         name: 'doctorDetails',
-        // meta: {
-        //     layout : 'default'
-        // } ,
+        meta: {
+            layout : 'default'
+        } ,
         component: () => import(/* webpackChunkName : "home" */ "@/views/Home/Doctor/doctorAll.vue"),
         children: [
             {
@@ -74,9 +68,9 @@ const routes = [
     {
         path: "/special",
         name: 'specialDetail',
-        // meta: {
-        //     layout : 'default'
-        // } ,
+        meta: {
+            layout : 'default'
+        } ,
         component: () => import(/* webpackChunkName : "home" */ "@/views/HomeDetails/specialty/specialtyAll.vue"),
         children: [
             {
@@ -112,6 +106,11 @@ const routes = [
             {
                 path: 'manager-history',
                   component: () => import(/* webpackChunkName : "home" */ "@/views/Doctor/doctor-history/doctorHistory.vue"),
+    
+            },
+            {
+                path: 'manager-posts',
+                  component: () => import(/* webpackChunkName : "home" */ "@/views/Doctor/doctor-posts/doctorPost.vue"),
     
             },
 
@@ -247,12 +246,13 @@ const router = createRouter({
     routes,
 })
 router.beforeEach((to, from, next) => {
-    const publicPages = [ '/system' ,];
-    const authRequired = publicPages.includes(to.path);
+    const protectedPages = ['/system', '/doctor/manager'];
     const loggedIn = localStorage.getItem('access_token');
-    if (authRequired && !loggedIn) {
+  
+    if (protectedPages.some(page => to.path.startsWith(page)) && !loggedIn) {
       return next('/login');
-    } 
+    }
+  
     next();
-  })
+  });
 export default router
