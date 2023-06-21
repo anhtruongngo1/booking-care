@@ -38,6 +38,8 @@
             "specialty": "specialty",
             "manage-specialty": " management specialty",
             "handbook": "handbook",
+            "manage-handbook": "management handbook",
+
             "manage-apointments": "Manage medical appointments"
         },
         "doctor": {

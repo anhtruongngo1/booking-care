@@ -13,7 +13,7 @@
             <div className="text-red-500">
                 <Carousel v-bind="settings" :breakpoints="breakpoints">
                     <Slide v-for="item in listData" :key="item.id">
-                        <router-link :to="`/doctor/${item.id}`">
+                        <router-link :to="`/special/${item.id}`">
                             <div>
                                 <div
                                     :class="`w-[250px] h-[150px] bg-cover  bg-center bg-no-repeat`"

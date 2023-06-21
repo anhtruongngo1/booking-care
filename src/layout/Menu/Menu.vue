@@ -153,7 +153,7 @@ export default {
                         {
                             type: 'clinic',
                             to: '/doctor/manager/manager-posts',
-                            title: 'menu.admin.manage-clinic',
+                            title: 'menu.doctor.manage-handbook',
                         },
                     ],
                 },

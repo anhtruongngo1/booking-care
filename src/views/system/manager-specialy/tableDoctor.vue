@@ -3,7 +3,7 @@
                     <p class="text-xl font-black text-[#0071BA]">{{ $t('home.listDoctor')}}</p>
                 </div>
                 <handbookBarVue />
-                <div class="min-h-[56%] shadow-md mt-4">
+                <div class="min-h-[59%] shadow-md mt-4">
                     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead
                             className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"

@@ -5,11 +5,28 @@
 </template>
 
 <script>
-import { ref, watch } from 'vue';
+import { ref, watch , onMounted } from 'vue';
+import router from '@/router/router';
+
+import useDoctor from "@/services/apiListDoctor"
+
 export default {
-    setup() {},
-    components: {},
+    setup() {
+      onMounted(() => {
+            // Navigate to "/system/dashboard" when the component is mounted
+            router.push('/system/dashboard');
+        });
+
+      return {
+  
+      }
+    },
+    components: {
+        
+
+    },
 };
 </script>
 
-<style></style>
+<style>
+</style>

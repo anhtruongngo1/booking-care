@@ -1,11 +1,11 @@
 <template>
     <div>
         <!-- Modal backdrop -->
-        <div v-show="isShowModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center z-10">
+        <div v-show="isShowModal" class="z-[999] fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center z-10">
             <!-- Modal content -->
-            <div @click="handleShow" class="relative top-0 left-0 w-full h-full"></div>
+            <div @click="handleShow" class="relative top-0 left-0 w-full h-full z-[999]"></div>
             <div
-                class="bg-white rounded-lg p-6 max-w-[1440px] w-[50%] overflow-y-auto absolute top-0 left-0 right-0 bottom-0 m-auto h-[90%] py-8"
+                class="z-[999] bg-white rounded-lg p-6 max-w-[1440px] w-[50%] overflow-y-auto absolute top-0 left-0 right-0 bottom-0 m-auto h-[90%] py-8"
             >
                 <!-- Modal header -->
                 <h2 class="text-lg font-bold mb-4 text-center">Thông tin đặt lịch khám</h2>

@@ -24,7 +24,7 @@
 
 <script>
 import useDoctor from "@/services/apiListDoctor"
-import useFormValidation from '../../../../../components/validate/FormValidation';
+import useFormValidation from '@/components/validate/FormValidation';
 import {ref , watch} from "vue"
 export default {
     props: {

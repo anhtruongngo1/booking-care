@@ -5,7 +5,7 @@
             <div className="mx-[2%] flex gap-x-4">
                 <input
                     v-model="title"
-                    class="w-full text-5xl font-medium focus-within:outline-none"
+                    class="w-full text-3xl font-medium focus-within:outline-none"
                     placeholder="TIEU DE"
                 />
                 <div class="w-[50%]">

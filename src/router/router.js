@@ -187,6 +187,13 @@ const routes = [
             {
                 // UserProfile will be rendered inside User's <router-view>
                 // when /user/:id/profile is matched
+                path: 'dashboard',
+                  component: () => import(/* webpackChunkName : "home" */ "@/views/system/dashboard/dashboard.vue"),
+    
+            },
+            {
+                // UserProfile will be rendered inside User's <router-view>
+                // when /user/:id/profile is matched
                 path: 'manager-special',
                   component: () => import(/* webpackChunkName : "home" */ "@/views/system/manager-specialy/managerSpecial.vue"),
     
