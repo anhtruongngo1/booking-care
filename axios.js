@@ -1,6 +1,6 @@
 import axios from 'axios';
 const instance = axios.create({
-    baseURL: 'http://localhost:8080',
+    baseURL: process.env.VUE_APP_BACKEND_URL,
    //   withCredentials: true
 });
 
