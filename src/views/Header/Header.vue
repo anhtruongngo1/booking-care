@@ -2,9 +2,9 @@
     <div class="xl:h-[60px] bg-white-400">
         <div class="w-full h-full flex px-[20px]">
             <div class="flex w-1/4 items-center justify-center">
-                <a href="/login">
+                <router-link :to="`/login`">
                     <font-awesome-icon :icon="['fas', 'bars']" class="text-3xl text-gray-400 cursor-pointer mr-3" />
-                </a>
+                </router-link>
                 <img
                     class="h-full"
                     src="https://res.cloudinary.com/dl0wt2mgx/image/upload/v1678091386/booking-care/logo1_jfb7hu.jpg"
